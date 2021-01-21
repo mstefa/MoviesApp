@@ -53,7 +53,7 @@ Main libraries/repositories used on this proyects are:
 
 * [React](https://reactjs.org/)
 * [React Router](https://reactrouter.com/)
-* [Redux](https://reactrouter.com/)
+* [Redux](https://redux.js.org/)
 * [CSSModule](https://github.com/css-modules/css-modules)
 
 
