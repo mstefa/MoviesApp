@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {removeMovieFavorite} from '../../actions/index'
 import MovieCard from '../MovieCard/MovieCard'
-import { removeArticle } from "../../actions/index";
-
-import './Favorites.css';
+import Styles from './Favorites.module.css';
 
 export class ConnectedList extends Component {
 
@@ -14,13 +12,13 @@ export class ConnectedList extends Component {
         <h2>Películas Favoritas</h2>
         {!(this.props.favMovies.length)  ?
           <div> No hay peliculas favoritas seleccionadas </div>
-        :<ul>
+        :<div className={Styles.container} >
           {this.props.favMovies.map((movie)=>{
             return(
-              <MovieCard movie = {movie} action = {this.props.removeMovieFavorite} text = 'remove' />
+              <MovieCard  key = {movie.imdbID}  movie = {movie} action = {this.props.removeMovieFavorite} text = 'remove' />
             )
           })}
-        </ul>}
+        </div>}
       </div>
     );
   }

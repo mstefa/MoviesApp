@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="public/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/movies-icon.jpg" alt="Logo" width="80" height="80">
 
   <h3 align="center">Redux Movi App</h3>
 
@@ -42,6 +42,10 @@
 
 This is a little project with educational propurse. Hope it could be a referece for people looking for exercies about the technologies mention on <a href="#built-with">Built With</a> 
 
+<p align="center">
+    <img src="public/movie.gif" alt="Logo" width="500" height="320">
+</p>
+
 I have marked some issues for myself to investigate/study on as TODO. 
 
 I look forward to your feedback and comments on the code, architecture improvements and/or any general suggestions.
@@ -55,8 +59,6 @@ Main libraries/repositories used on this proyects are:
 * [React Router](https://reactrouter.com/)
 * [Redux](https://redux.js.org/)
 * [CSSModule](https://github.com/css-modules/css-modules)
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -97,7 +99,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 <!-- API -->
 ## API
 
-for this project this [API](http://www.omdbapi.com/) is used.
+for this project the The Open Movie Database [OMDb API](http://www.omdbapi.com/) is used. The API key should be exported from a config.js file on the src folder.
 
 <!-- LICENSE -->
 ## License

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MovieCard from '../MovieCard/MovieCard'
-import { NavLink } from 'react-router-dom';
 import {addMovieFavorite, getMovies} from '../../actions/index'
-import './Buscador.css';
+import Styles from './Buscador.module.css';
 import apiKey from '../../config.js'
 
 export class Buscador extends Component {
@@ -16,12 +15,11 @@ export class Buscador extends Component {
     };
   }
   handleChange(event) {
-    this.setState({ title: event.target.value });   // Each time the input change, the value is saved
-
-    if (event.target.value.leght >=3 &&  event.target.value.leght % 2 > 0){
-      fetch('http://www.omdbapi.com/?=' + apiKey + '&s' + event.target.value)  // we fetch to the API the films that can mach the value
+    this.setState({ title: event.target.value });   // Each time the input change, the value is saved 
+    if (event.target.value.length >=3){
+      fetch(`http://www.omdbapi.com/?${apiKey}&s=${event.target.value}`)  // we fetch to the API the films that can mach the value
       .then(response => response.json())
-      .then(response => this.setState({response: response}))
+      .then(response => this.setState({response: response})) //
       if (this.state.response.Response === 'True'){
         let moviesTitles;
         moviesTitles= this.state.response.Search.map((movie => movie.Title))
@@ -39,12 +37,13 @@ export class Buscador extends Component {
   render() {
     const { title } = this.state;
     return (
-      <div>
-        <h2>Buscador</h2>
-        <form className="form-container" onSubmit={(e) => this.handleSubmit(e)}>
+      <div className={Styles.cnt} >      
+        <form className={Styles.formContainer} onSubmit={(e) => this.handleSubmit(e)}>
           <div>
-            <label className="label" htmlFor="title">Película: </label>
+            <label className={Styles.label} htmlFor="title">Película: </label>
             <input
+              className={Styles.input}
+              placeholder='Escriba un título'
               type="text"
               id="txtAutoComplete"
               list="MovieList"
@@ -57,21 +56,21 @@ export class Buscador extends Component {
             )}
             </datalist>
           </div>
-          <button type="submit" >BUSCAR</button>
+          <button className={Styles.button} type="submit" >BUSCAR</button>
 
         </form>
         {!this.props.movies 
         ? (<div>Por favor ingrese un nombre de una pelicula</div>)
         :
-        <ul>
+        <div className={Styles.container}>
           {
             this.props.movies.map((movie)=>{
               return(
-                <MovieCard movie = {movie} action = {this.props.addMovieFavorite} text = 'Add to Favorite' />
+                <MovieCard key = {movie.imdbID} movie = {movie} action = {this.props.addMovieFavorite} text = 'Add to Favorite' />
               )})
             
           }
-        </ul>
+        </div>
       }
       </div>
     );

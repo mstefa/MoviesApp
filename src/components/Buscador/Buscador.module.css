@@ -1,0 +1,36 @@
+.cnt {
+    padding-top: 1rem;
+    border-bottom: slategray solid 0.1rem;
+}
+.formContainer {
+    display:flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.button {
+    margin-left: 20px;
+}
+.label {
+    padding-right: 10px;
+    font-size: larger;
+    font-weight: 600;
+}
+@media (max-width: 500px){
+  .label {
+    display: none;
+  }
+}
+
+.input{
+  border-radius: 0.2rem;
+  border: slategray solid 0.1rem;
+  height: 2rem;
+  font-size: larger;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

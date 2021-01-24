@@ -13,10 +13,6 @@ class Movie extends React.Component {
 
     componentDidMount(){
         this.props.getMovieDetail(this.props.match.params.id);
-        console.log('montaje')
-        fetch("http://www.omdbapi.com/?apikey=20dac387&i=" + this.props.match.params.id)
-          .then(response => response.json())
-          .then(json => this.setState(json))
     } 
 
     render() {
@@ -24,13 +20,14 @@ class Movie extends React.Component {
       if(!!this.props.movieDetail){
         return (
           <div className={Styles.container}>
-              <p className={Styles.titlespan}><strong>Titulo: {' '}</strong>{this.props.movieDetail.Title}</p>
+              <p className={Styles.titlespan}>{this.props.movieDetail.Title}</p>
+              <img className={Styles.image} src={this.props.movieDetail.Poster} alt = 'Movie Poster' ></img>
               <p><strong>Año: {' '}</strong>{this.props.movieDetail.Year}</p>
               <p><strong>Tipo: {' '}</strong>{this.props.movieDetail.Type}</p>
-              <img className={Styles.image} src={this.props.movieDetail.Poster} alt = 'Movie Poster' ></img>
-              <p><strong>Actors {' '}</strong>{this.state.Actors}</p>
-              <p><strong>Premios {' '}</strong>{this.state.Awards}</p>
-              <p><strong>imdbRating {' '}</strong>{this.state.imdbRating}</p>
+              <p><strong>Plot: {' '}</strong>{this.props.movieDetail.Plot}</p>
+              <p><strong>Actors {' '}</strong>{this.props.movieDetail.Actors}</p>
+              <p><strong>Premios {' '}</strong>{this.props.movieDetail.Awards}</p>
+              <p><strong>imdbRating {' '}</strong>{this.props.movieDetail.imdbRating}</p>
               <button onClick={()=> this.props.addMovieFavorite(this.props.movieDetail)}>Agregar a Favoritos</button> 
           </div>
       );

@@ -1,0 +1,32 @@
+.container{
+  margin: 1rem;
+  border: var(--bdrcolor) solid 0.08rem;
+  border-radius: 0.5rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+.container:hover{
+  border: var(--bdrhover) solid 0.08rem;
+}
+
+.img{
+  border-radius: 0.5rem;
+  width: 15rem;
+  
+}
+
+.button{
+  margin: 0.5rem;
+}
+
+.title{
+  color: var(--maincolor)
+}
+
+.description{
+  color: var(--maincolor)
+}

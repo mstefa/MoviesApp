@@ -11,7 +11,6 @@ function rootReducer(state = initialState, action) {
   switch (action.type) {
     
     case ADD_MOVIE_FAVORITE: 
-    console.log(action.payload)
     return {
       ...state,
       movies: state.movies.concat(action.payload),
@@ -31,11 +30,9 @@ function rootReducer(state = initialState, action) {
     }
 
   case GET_MOVIE_DETAIL:
-    console.log('red')
-    console.log(action.payload)
     return{
       ...state,
-      movieDetail: state.moviesLoaded.find( (movie) => movie.imdbID === action.payload)
+      movieDetail: action.payload
     }
 
   default:

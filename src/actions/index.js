@@ -1,5 +1,5 @@
 import {ADD_MOVIE_FAVORITE, GET_MOVIES, REMOVE_MOVIE_FAVORITE, GET_MOVIE_DETAIL} from './types'
-
+import apiKey from '../config.js'
 
 export function addMovieFavorite(payload) {
   return { 
@@ -16,16 +16,19 @@ export function removeMovieFavorite(payload) {
   };
 }
 
-export function getMovieDetail(payload) {
-  return { 
-    type: GET_MOVIE_DETAIL, 
-    payload 
-  };
+export function getMovieDetail(id) {
+  return function(dispatch) {
+    return fetch(`http://www.omdbapi.com/?${apiKey}&i=${id}`)
+      .then(response => response.json())
+      .then(json => {
+        dispatch({ type: GET_MOVIE_DETAIL, payload: json });
+      });
+  }
 }
 
 export function getMovies(titulo) {
   return function(dispatch) {
-    return fetch("http://www.omdbapi.com/?apikey=20dac387&s=" + titulo)
+    return fetch(`http://www.omdbapi.com/?${apiKey}&s=${titulo}`)
       .then(response => response.json())
       .then(json => {
         dispatch({ type: GET_MOVIES, payload: json });
